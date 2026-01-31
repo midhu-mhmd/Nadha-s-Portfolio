@@ -10,149 +10,214 @@ type Project = {
   liveUrl?: string;
   githubUrl?: string;
   status?: "Live" | "In Progress" | "Case Study";
+  year?: string;
 };
 
 const PROJECTS: Project[] = [
   {
-    title: "Dripnest E-commerce",
+    title: "CRM SaaS (Flutter)",
     description:
-      "Full-stack MERN e-commerce app with Razorpay payments, authentication, admin dashboard, and responsive UI.",
-    tech: ["React", "Node.js", "Express", "MongoDB"],
-    liveUrl: "https://new-portfolio-rosy-rho.vercel.app/",
-    githubUrl: "https://github.com/midhu-mhmd",
-    status: "Case Study",
+      "Currently developing a CRM SaaS application using Flutter with Clean Architecture and Provider, featuring automatic call recording and complete student/inquiry data management. Backend uses Node.js for generating automated content and assets.",
+    tech: ["Flutter", "Dart", "Provider", "Clean Architecture", "Node.js"],
+    status: "In Progress",
+    year: "2025",
+    githubUrl: "#",
   },
   {
-    title: "Multi-Clinic SaaS",
+    title: "Movie Discovery App",
     description:
-      "Multi-tenant SaaS platform with tenant-level isolation, JWT auth, RBAC, and scalable API design.",
-    tech: ["MERN", "JWT", "RBAC", "Multi-Tenant"],
-    status: "In Progress",
-    githubUrl: "https://github.com/midhu-mhmd",
+      "Movie exploration app that fetches real-time data from public REST APIs. Includes dynamic search, categorized movie sections, favorites list, and robust error handling for smooth performance on slow networks.",
+    tech: ["Flutter", "REST APIs", "JSON Parsing", "Provider", "Error Handling"],
+    status: "Case Study",
+    year: "2025",
+    githubUrl: "https://github.com/Nadayunus/api_movie_project",
+  },
+  {
+    title: "TravelMate",
+    description:
+      "Social travel-sharing platform where users post experiences, upload photos, and interact via likes/comments. Built with Firebase Authentication and Supabase, using Cloud Firestore & Cloud Storage for efficient multimedia handling and real-time sync.",
+    tech: ["Flutter", "Firebase Auth", "Cloud Firestore", "Cloud Storage", "Supabase"],
+    status: "Case Study",
+    year: "2025",
+    githubUrl: "https://github.com/Nadayunus/Travel-Mate",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative w-full bg-[#F9F6F3] py-24 sm:py-32">
-      {/* 1. STRUCTURAL GRID LINES (Matching Global UI) */}
-      <div className="absolute inset-0 z-0 flex justify-between px-6 sm:px-12 pointer-events-none opacity-10">
-        <div className="w-[1px] h-full bg-[#C0847B]" />
-        <div className="w-[1px] h-full bg-[#C0847B] hidden md:block" />
-        <div className="w-[1px] h-full bg-[#C0847B] hidden md:block" />
-        <div className="w-[1px] h-full bg-[#C0847B]" />
+    <section
+      id="projects"
+      className="relative w-full overflow-hidden bg-[#07010E] py-24 sm:py-32 text-white"
+    >
+      {/* Background: noise + glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 opacity-25 mix-blend-screen bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full bg-fuchsia-600/15 blur-[120px]" />
+        <div className="absolute -bottom-44 -right-40 h-[560px] w-[560px] rounded-full bg-purple-500/15 blur-[140px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.06] via-transparent to-black/40" />
+      </div>
+
+      {/* Vertical grid lines */}
+      <div className="pointer-events-none absolute inset-0 z-0 flex justify-between px-6 opacity-[0.08] sm:px-12">
+        <div className="h-full w-px bg-white" />
+        <div className="hidden h-full w-px bg-white md:block" />
+        <div className="hidden h-full w-px bg-white md:block" />
+        <div className="h-full w-px bg-white" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 sm:px-12">
-        {/* HEADER: Editorial Style */}
-        <div className="mb-20 flex flex-col gap-4 border-b border-[#C0847B]/10 pb-12 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#C0847B]/60 block mb-4">
-              (02) Portfolio
-            </span>
-            <h2 className="font-serif text-5xl italic text-[#C0847B] tracking-tighter sm:text-7xl">
-              Selected <span className="not-italic font-sans font-light uppercase">Works</span>
+        {/* Header */}
+        <div className="mb-14 grid grid-cols-1 gap-10 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-white/60">
+              (02) Selected Works
+            </p>
+
+            <h2 className="mt-5 font-serif text-5xl italic leading-[0.95] tracking-tight sm:text-7xl">
+              Featured{" "}
+              <span className="bg-gradient-to-r from-fuchsia-200 via-white to-purple-200 bg-clip-text text-transparent">
+                Projects
+              </span>
+              .
+              <br />
+              <span className="not-italic font-sans font-light uppercase tracking-tight text-white/90">
+                Flutter apps built for real users.
+              </span>
             </h2>
           </div>
-          <p className="max-w-xs text-xs font-bold uppercase tracking-[0.2em] text-[#C0847B]/60 leading-relaxed">
-            Focused on scalability, security, and high-fidelity user interaction.
-          </p>
+
+          <div className="md:col-span-4 md:text-right">
+            <div className="mb-4 ml-auto h-px w-48 bg-white/10" />
+            <p className="max-w-sm text-sm leading-relaxed text-white/65 md:ml-auto">
+              Clean Architecture, Provider state management, reliable backend
+              integrations (Firebase/Supabase), and smooth UI/UX polish.
+            </p>
+          </div>
         </div>
 
-        {/* PROJECT LIST: Vertical Index Style */}
+        {/* List */}
         <div className="flex flex-col">
           {PROJECTS.map((p, i) => (
             <motion.article
               key={p.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.8 }}
-              className="group relative border-b border-[#C0847B]/10 py-12 transition-colors hover:bg-[#C0847B]/[0.02] sm:py-16"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: i * 0.06, duration: 0.7 }}
+              className="group relative"
             >
-              <div className="grid grid-cols-1 md:grid-cols-12 items-start gap-8">
-                
-                {/* 01. INDEX NUMBER */}
-                <div className="md:col-span-1">
-                  <span className="font-serif italic text-2xl text-[#C0847B]/30 transition-colors group-hover:text-[#C0847B]">
-                    0{i + 1}
-                  </span>
+              <div className="relative overflow-hidden border-t border-white/10 py-10 sm:py-12">
+                {/* Hover glow */}
+                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <div className="absolute -left-20 top-6 h-40 w-40 rounded-full bg-fuchsia-500/10 blur-[60px]" />
+                  <div className="absolute right-0 bottom-0 h-48 w-48 rounded-full bg-purple-500/10 blur-[70px]" />
                 </div>
 
-                {/* 02. TITLE & STATUS */}
-                <div className="md:col-span-4">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-serif text-3xl italic text-[#C0847B] sm:text-4xl">
+                <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-12 md:items-start">
+                  {/* 01 index */}
+                  <div className="md:col-span-1">
+                    <span className="font-serif text-2xl italic text-white/35 transition-colors group-hover:text-white/70">
+                      0{i + 1}
+                    </span>
+                  </div>
+
+                  {/* 02 title + meta */}
+                  <div className="md:col-span-5">
+                    <h3 className="font-serif text-3xl italic tracking-tight text-white sm:text-4xl">
                       {p.title}
                     </h3>
+
+                    <div className="mt-3 flex flex-wrap items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/55">
+                      {p.status && <span>{p.status}</span>}
+                      <span className="h-1 w-1 rounded-full bg-white/20" />
+                      <span>{p.year ?? "2025"}</span>
+                    </div>
+                  </div>
+
+                  {/* 03 desc + tech */}
+                  <div className="md:col-span-4">
+                    <p className="max-w-md text-sm leading-relaxed text-white/70">
+                      {p.description}
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {p.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-white/65 backdrop-blur-md"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* 04 actions */}
+                  <div className="md:col-span-2 md:flex md:justify-end">
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#C0847B]/60">
-                        {p.status}
-                      </span>
-                      <div className="h-1 w-1 rounded-full bg-[#C0847B]/30" />
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#C0847B]/60">
-                        2025
-                      </span>
+                      {p.liveUrl && (
+                        <Link
+                          href={p.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group/btn inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 backdrop-blur-md transition-all hover:bg-white/10"
+                          aria-label="Open live project"
+                        >
+                          <svg
+                            className="h-5 w-5 -rotate-45 transition-transform group-hover/btn:rotate-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1.5}
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </svg>
+                        </Link>
+                      )}
+
+                      {p.githubUrl && (
+                        <Link
+                          href={p.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[11px] font-bold tracking-widest text-white/80 backdrop-blur-md transition-all hover:bg-white/10"
+                          aria-label="Open GitHub repository"
+                        >
+                          GIT
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
-
-                {/* 03. DESCRIPTION & TECH */}
-                <div className="md:col-span-4">
-                  <p className="text-sm font-medium leading-relaxed text-[#C0847B]/80 max-w-sm">
-                    {p.description}
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
-                    {p.tech.map((t) => (
-                      <span key={t} className="font-mono text-[9px] uppercase tracking-widest text-[#C0847B]/50">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 04. ACTIONS */}
-                <div className="md:col-span-3 flex md:justify-end gap-4">
-                  {p.liveUrl && (
-                    <Link
-                      href={p.liveUrl}
-                      target="_blank"
-                      className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C0847B]/20 transition-all hover:bg-[#C0847B] hover:text-[#F9F6F3]"
-                    >
-                      <svg className="h-5 w-5 -rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </Link>
-                  )}
-                  {p.githubUrl && (
-                    <Link
-                      href={p.githubUrl}
-                      target="_blank"
-                      className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C0847B]/20 transition-all hover:bg-[#C0847B] hover:text-[#F9F6F3]"
-                    >
-                      <span className="font-mono text-[10px] font-bold">GIT</span>
-                    </Link>
-                  )}
-                </div>
-
               </div>
             </motion.article>
           ))}
+
+          <div className="border-t border-white/10" />
         </div>
 
-        {/* FOOTER ACTION */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-20 flex justify-center"
+        {/* Footer action */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mt-16 flex justify-center"
         >
           <Link
-            href="https://github.com/midhu-mhmd"
+            href="#"
             target="_blank"
-            className="group flex flex-col items-center gap-4"
+            rel="noreferrer"
+            className="group flex flex-col items-center gap-3"
           >
-            <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#C0847B]/60">More on GitHub</span>
-            <div className="h-12 w-[1px] bg-[#C0847B]/20 transition-all group-hover:h-20" />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-white/60 group-hover:text-white/80 transition">
+              More on GitHub
+            </span>
+            <div className="h-12 w-px bg-white/15 transition-all group-hover:h-20" />
           </Link>
         </motion.div>
       </div>

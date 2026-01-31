@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-// 1. Core Framer Motion & Scroll Components
 import SmoothScroll from "@/components/SmoothScroll";
-import PageTransition from "@/components/PageTransition";
 import Navbar from "./home/navbar";
-import Footer from "./home/footer"; // Ensure this path is correct based on your file tree
+import Footer from "./home/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,11 +36,10 @@ export default function RootLayout({
           <Navbar />
           
           {/* 3. PageTransition wraps the main content only */}
-          <PageTransition>
             <main id="main-content">
               {children}
             </main>
-          </PageTransition>
+    
           <Footer />
         </SmoothScroll>
       </body>

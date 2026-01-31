@@ -1,137 +1,145 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import { motion, Variants } from "framer-motion";
 
-// 1. Explicitly type your variants to satisfy the TS compiler
 const containerVars: Variants = {
-  initial: { 
-    transition: { staggerChildren: 0.1 } 
-  },
-  animate: { 
-    transition: { staggerChildren: 0.1, delayChildren: 0.3 } 
-  },
+  initial: { transition: { staggerChildren: 0.08 } },
+  animate: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
 };
 
 const itemVars: Variants = {
-  initial: { y: "100%", opacity: 0 },
-  animate: { 
-    y: 0, 
-    opacity: 1, 
-    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } 
+  initial: { y: 18, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#F9F6F3] text-[#C0847B] selection:bg-[#C0847B] selection:text-[#F9F6F3]">
-      
-      {/* 1. STRUCTURAL GRID LINES */}
-      <div className="absolute inset-0 z-0 flex justify-between px-6 sm:px-12 pointer-events-none">
-        <div className="w-px h-full bg-[#C0847B]/10" />
-        <div className="w-px h-full bg-[#C0847B]/10 hidden md:block" />
-        <div className="w-px h-full bg-[#C0847B]/10 hidden md:block" />
-        <div className="w-px h-full bg-[#C0847B]/10" />
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#07010E] text-white">
+      {/* Background: grain + purple glow (similar vibe) */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 opacity-30 mix-blend-screen bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full bg-fuchsia-600/20 blur-[120px]" />
+        <div className="absolute -bottom-44 -right-40 h-[560px] w-[560px] rounded-full bg-purple-500/20 blur-[140px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.06] via-transparent to-black/40" />
       </div>
 
-      {/* 2. TEXTURE & LIGHT */}
-      <div className="absolute inset-0 -z-10 opacity-30">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-multiply" />
-        <div className="absolute top-[-10%] right-[-5%] h-[600px] w-[600px] rounded-full bg-[#D48D7B]/20 blur-[120px]" />
-      </div>
-
-      {/* 3. MAIN CONTENT CONTAINER */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-[1400px] flex-col justify-between px-6 py-12 sm:px-12">
-        
-        {/* TOP SECTION: Identity & Status */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-8">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Developer / 01</span>
-            <h2 className="mt-2 text-sm font-medium">Muhammed Midlaj</h2>
-          </motion.div>
-          
-          <div className="hidden lg:block" /> 
-          
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.2 }}>
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Availability</span>
-            <div className="mt-2 flex items-center gap-2 text-sm font-medium">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#C0847B] animate-pulse" />
-              Open for collaboration
-            </div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.3 }} className="text-right">
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em]">Loc. 11.25°N</span>
-            <h2 className="mt-2 text-sm font-medium">Kerala, India</h2>
-          </motion.div>
-        </div>
-
-        {/* MIDDLE SECTION: Bold Typography */}
-        <motion.div 
-          variants={containerVars}
-          initial="initial"
-          animate="animate"
-          className="flex flex-col items-start gap-4 md:gap-0"
+      <div className="relative z-10 mx-auto flex min-h-screen  items-center px-6 py-14 sm:px-12">
+        {/* Main Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-full overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur-xl"
         >
-          <div className="overflow-hidden">
-            <motion.h1 
-              variants={itemVars}
-              className="font-serif text-[clamp(3rem,12vw,12rem)] italic leading-[0.85] tracking-tighter"
-            >
-              Building
-            </motion.h1>
+          {/* inner glow */}
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-[80px]" />
+            <div className="absolute right-10 top-0 h-72 w-72 rounded-full bg-purple-400/10 blur-[90px]" />
           </div>
-          
-          <div className="overflow-hidden md:ml-40 lg:ml-64">
-            <motion.h1 
-              variants={itemVars}
-              className="font-sans text-[clamp(3rem,12vw,12rem)] font-light leading-[0.85] tracking-tighter uppercase"
-            >
-              Modern Flow
-            </motion.h1>
-          </div>
-        </motion.div>
 
-        {/* BOTTOM SECTION: Bio & Interaction */}
-        <div className="grid grid-cols-1 md:grid-cols-12 items-end gap-12">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="md:col-span-4"
+          {/* Content */}
+          <motion.div
+            variants={containerVars}
+            initial="initial"
+            animate="animate"
+            className="relative z-10 grid grid-cols-1 gap-10 px-6 pb-10 pt-10 sm:px-10 md:grid-cols-2 md:items-center md:gap-8"
           >
-            <p className="max-w-xs text-sm leading-relaxed font-medium">
-              (Index 2025) Specializing in scalable architecture and high-fidelity user experiences using the MERN stack.
-            </p>
-          </motion.div>
+            {/* Left */}
+            <div className="flex flex-col gap-6">
+              <motion.p
+                variants={itemVars}
+                className="text-[11px] font-semibold uppercase tracking-[0.35em] text-white/60"
+              >
+                Welcome to my world ✦
+              </motion.p>
 
-          <div className="md:col-span-4 flex flex-col gap-6 md:items-center">
-             <Link 
-                href="#projects" 
-                className="group relative flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em]"
-             >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C0847B]/30 transition-all group-hover:bg-[#C0847B] group-hover:text-[#F9F6F3]">
-                  <svg className="h-5 w-5 -rotate-45 transition-transform group-hover:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+              <motion.div variants={itemVars} className="space-y-2">
+                <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
+                  Hi, I’m{" "}
+                  <span className="bg-linear-to-r from-fuchsia-200 via-white to-purple-200 bg-clip-text text-transparent">
+                    Nada A
+                  </span>
+                </h1>
+                <h2 className="text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl">
+                  Flutter{" "}
+                  <span className="bg-linear-to-r from-fuchsia-300 to-purple-300 bg-clip-text text-transparent">
+                    Developer
+                  </span>
+                </h2>
+              </motion.div>
+
+              <motion.p
+                variants={itemVars}
+                className="max-w-xl text-sm leading-relaxed text-white/70"
+              >
+                I build clean, responsive Android apps with <span className="text-white/85 font-semibold">Flutter & Dart</span> —
+                focusing on maintainable architecture, smooth UI/UX, and reliable integrations using{" "}
+                <span className="text-white/85 font-semibold">Firebase, Supabase</span> and{" "}
+                <span className="text-white/85 font-semibold">REST APIs</span>.
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div variants={itemVars} className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="#projects"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-xs font-bold uppercase tracking-widest text-black hover:bg-white/90 transition"
+                >
+                  My Projects
+                </Link>
+
+                <a
+                  href="/Nada-Flutter-Resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-xs font-bold uppercase tracking-widest text-white hover:bg-white/10 transition"
+                >
+                  Download CV
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right: 3D avatar frame */}
+            <motion.div variants={itemVars} className="relative">
+              <div className="relative mx-auto aspect-[4/3] w-full max-w-[520px]">
+                {/* outer frame */}
+                <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-fuchsia-500/25 via-purple-500/15 to-transparent p-[2px]">
+                  <div className="h-full w-full rounded-[26px] bg-black/25 backdrop-blur-md" />
                 </div>
-                See Projects
-             </Link>
-          </div>
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="md:col-span-4 flex justify-end gap-8 text-[10px] font-bold uppercase tracking-widest"
-          >
-            <Link href="#" className="hover:opacity-50 transition-opacity">GitHub</Link>
-            <Link href="#" className="hover:opacity-50 transition-opacity">LinkedIn</Link>
-            <Link href="#" className="hover:opacity-50 transition-opacity">CV</Link>
+                {/* floating elements */}
+                <div className="pointer-events-none absolute -left-3 top-10 h-14 w-14 rounded-2xl bg-white/10 blur-[0px]" />
+                <div className="pointer-events-none absolute -right-4 bottom-10 h-16 w-16 rounded-full bg-fuchsia-400/20 blur-[12px]" />
+
+                {/* avatar area */}
+                <div className="absolute inset-0 grid place-items-center">
+                  <div className="relative">
+                    <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-fuchsia-500/25 to-purple-500/25 blur-[30px]" />
+                    <div className="grid h-48 w-48 place-items-center rounded-full border border-white/15 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.55)]">
+                      <div className="grid h-40 w-40 place-items-center rounded-full bg-gradient-to-br from-white/15 to-white/5">
+                        <span className="text-5xl font-semibold tracking-tight">N</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* bottom mini “About me” strip (like the reference) */}
+                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 bg-black/25 px-5 py-4 backdrop-blur-md">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-white/60">
+                    About me
+                  </p>
+                  <p className="mt-2 text-sm text-white/70">
+                    Flutter developer based in Kozhikode, building elegant mobile experiences.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
-
-        </div>
+        </motion.div>
       </div>
     </section>
   );
