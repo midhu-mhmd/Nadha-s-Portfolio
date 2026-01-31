@@ -142,12 +142,6 @@ export default function Footer() {
                 >
                   nadayunuseng@gmail.com
                 </a>
-                <a
-                  href="tel:+919746173284"
-                  className="block text-white/70 hover:text-white transition"
-                >
-                  +91 9746173284
-                </a>
               </div>
             </div>
           </div>

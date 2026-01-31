@@ -78,11 +78,6 @@ export default function Projects() {
               <span className="bg-gradient-to-r from-fuchsia-200 via-white to-purple-200 bg-clip-text text-transparent">
                 Projects
               </span>
-              .
-              <br />
-              <span className="not-italic font-sans font-light uppercase tracking-tight text-white/90">
-                Flutter apps built for real users.
-              </span>
             </h2>
           </div>
 
